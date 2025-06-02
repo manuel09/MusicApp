@@ -18,7 +18,9 @@ android {
         }
 
         python {
+            buildPython "3.8"
             pip {
+                upgrade true
                 install "spotdl"
                 install "yt-dlp"
             }
