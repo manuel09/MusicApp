@@ -19,8 +19,7 @@ android {
 
         python {
             pip {
-                install "spotdl"
-                install "yt-dlp"
+                requirements "requirements.txt"
             }
         }
     }
