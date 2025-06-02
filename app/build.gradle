@@ -1,34 +1,37 @@
 plugins {
     id 'com.android.application'
-    id 'com.chaquo.python'
+    id 'com.chaquo.python' version '12.0.0'
 }
 
 android {
-    compileSdk 34
+    compileSdk 33
+
     defaultConfig {
         applicationId "com.example.musicdownloader"
         minSdk 24
-        targetSdk 34
+        targetSdk 33
         versionCode 1
         versionName "1.0"
-        
+
+        python {
+            pip {
+                install "spotdl"
+                install "yt-dlp"
+            }
+        }
     }
-    buildFeatures {
-        compose true
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.4.0'
-    }
+
+    namespace 'com.example.musicdownloader'
 }
 
 dependencies {
-    implementation "androidx.activity:activity-compose:1.7.2"
-    implementation "androidx.compose.material3:material3:1.1.0"
-}
-
-chaquopy {
-    pip {
-        install "spotdl"
-        install "yt-dlp"
-    }
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
 }
